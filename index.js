@@ -7,7 +7,7 @@ import studentsRoutes from './routes/students.js';
 
 
 const app = express();
-const PORT = 5000;
+const PORT =process.env.PORT || 5000;
 
 //below line is for sending and receiving data through restApi in json
 app.use(bodyParser.json());
