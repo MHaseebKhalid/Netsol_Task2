@@ -1,19 +1,12 @@
 import express from 'express';
-
+import { v4 as uuid } from 'uuid';
 //initialize routes
 const router = express.Router();
 
-const students=[
-    {
-        firstName:'John',
-        lastName:'Doe',
-        age:25,
-    },
-    {
-        firstName:'Jhonny',
-        lastName:'Doe',
-        age:21,
-    }
+let students=[
+    {firstName:"Haseeb",lastName:"Khalid",age:25,id:"05de365a-d1ab-45d9-b98a-0a9884eea3dc"},
+    {firstName:"Junaid",lastName:"Khalid",age:25,id:"59a5f2a0-cd05-4c2c-be9a-78fbc9d551dd"},
+    {firstName:"Ali",lastName:"Khan",age:25,id:"f88e705d-142a-455f-8ba2-750ad0a19868"}
 ]
 
 
@@ -24,14 +17,73 @@ router.get('/', (req, res)=>{
     res.send(students);
 });
 
+
+//Post request
 router.post('/', (req, res)=>{
     
-
     //req.body is what we are posting
     const student = req.body;
-    students.push(student);
+
+    //for unique student id we'r using uuid
+    students.push({...student, id: uuid()});
+    
     res.send(`student with the name ${student.firstName} added!`);
 });
+
+//Get specific student with ID
+//  '/:id'  is because we'r expecting something after /
+router.get('/:id',(req, res)=>{
+    //first we will pass the id of specific Student
+    const { id } = req.params;
+
+    //now we'll find value
+    const StudentWithID = students.find((student)=> student.id == id);
+
+    res.send(StudentWithID);
+});
+
+
+
+//Delete request
+router.delete('/:id',(req, res)=>{
+    //first we will pass the id of specific Student
+    const { id } = req.params;
+
+    //now we'll filter value
+    students = students.filter((student)=> student.id !== id);
+
+    res.send(`Student with the ${id} is deleted`);
+});
+
+
+
+
+//Update request
+//we'r using PATCH method because we want to change data partially, we'r not using PUT because PUT override previous data
+router.patch('/:id',(req, res)=>{
+    //first we will pass the id of specific Student
+    const { id } = req.params;
+
+    const { firstName,lastName,age } = req.body;
+
+    const student = students.find((student)=> student.id == id);
+
+    if(firstName){
+        student.firstName=firstName;
+    }
+
+    if(lastName){
+        student.lastName=lastName;
+    }
+
+    if(age){
+        student.age=age;
+    }
+
+    res.send(`Student with the ${id} is Updated`);
+    
+});
+
 
 
 export default router; 
