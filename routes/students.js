@@ -1,88 +1,39 @@
 import express from 'express';
-import { v4 as uuid } from 'uuid';
+
+import {addStudent,getStudents,getStudent,deleteStudent,updateStudent} from '../controllers/students.js';
+
 //initialize routes
 const router = express.Router();
 
-let students=[
-    {firstName:"Haseeb",lastName:"Khalid",age:25,id:"05de365a-d1ab-45d9-b98a-0a9884eea3dc"},
-    {firstName:"Junaid",lastName:"Khalid",age:25,id:"59a5f2a0-cd05-4c2c-be9a-78fbc9d551dd"},
-    {firstName:"Ali",lastName:"Khan",age:25,id:"f88e705d-142a-455f-8ba2-750ad0a19868"}
-]
+
+
 
 
 // get request from main
-//each callback function have request and response parameters
 //all routes here are starting with /students i.e; /students == /
-router.get('/', (req, res)=>{
-    res.send(students);
-});
+router.get('/', getStudents);
+
+
 
 
 //Post request
-router.post('/', (req, res)=>{
-    
-    //req.body is what we are posting
-    const student = req.body;
-
-    //for unique student id we'r using uuid
-    students.push({...student, id: uuid()});
-    
-    res.send(`student with the name ${student.firstName} added!`);
-});
+router.post('/', addStudent);
 
 //Get specific student with ID
 //  '/:id'  is because we'r expecting something after /
-router.get('/:id',(req, res)=>{
-    //first we will pass the id of specific Student
-    const { id } = req.params;
-
-    //now we'll find value
-    const StudentWithID = students.find((student)=> student.id == id);
-
-    res.send(StudentWithID);
-});
+router.get('/:id',getStudent);
 
 
 
 //Delete request
-router.delete('/:id',(req, res)=>{
-    //first we will pass the id of specific Student
-    const { id } = req.params;
-
-    //now we'll filter value
-    students = students.filter((student)=> student.id !== id);
-
-    res.send(`Student with the ${id} is deleted`);
-});
+router.delete('/:id',deleteStudent);
 
 
 
 
 //Update request
 //we'r using PATCH method because we want to change data partially, we'r not using PUT because PUT override previous data
-router.patch('/:id',(req, res)=>{
-    //first we will pass the id of specific Student
-    const { id } = req.params;
-
-    const { firstName,lastName,age } = req.body;
-
-    const student = students.find((student)=> student.id == id);
-
-    if(firstName){
-        student.firstName=firstName;
-    }
-
-    if(lastName){
-        student.lastName=lastName;
-    }
-
-    if(age){
-        student.age=age;
-    }
-
-    res.send(`Student with the ${id} is Updated`);
-    
-});
+router.patch('/:id',updateStudent);
 
 
 
