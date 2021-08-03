@@ -20,10 +20,11 @@ npm install
 npm start
 
 
-***Below are demos How API is working:**
+**Below are demos How API is working:**
 
+##GET all students:
 <details>
-<summary>GET all students:</summary>
+<summary>Details:</summary>
  <p>
 http://localhost:5000/students
 **OR**
