@@ -56,12 +56,14 @@ http://localhost:5000/students
 **OR**
 https://netsoltask.herokuapp.com/students/
 
-*Sample JSON data for post method
+Sample JSON data for post method
   {
      "firstName":"Haseeb",
      "lastName":"Khalid",
      "age":24
      }
+  
+  
 **This is how data student will be added in form of JSON**
 ![POST](https://user-images.githubusercontent.com/38959887/128005689-74c077ad-fa66-43e2-9310-0db2478eeefc.PNG)
  </p>
@@ -75,11 +77,13 @@ http://localhost:5000/students/id
 **OR**
 https://netsoltask.herokuapp.com/students/id
   
-*Sample JSON data for Update method
+Sample JSON data for Update method
   {
      "firstName":"Haseeb",
     
      }
+  
+  
 
 **This is how specific student will be updated**
 ![PATCH](https://user-images.githubusercontent.com/38959887/128005786-4bd7e971-68c0-4e04-9051-b3a4da19ede4.PNG)
