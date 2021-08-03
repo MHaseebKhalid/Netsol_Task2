@@ -22,15 +22,17 @@ npm start
 
 ***Below are demos How API is working:**
 
-
-### GET all students:
+<details>
+<summary>GET all students:</summary>
+ <p>
 http://localhost:5000/students
 **OR**
 https://netsoltask.herokuapp.com/students
 
 **This is how data will be get in form of JSON**
 ![GET](https://user-images.githubusercontent.com/38959887/128004631-2cf23089-23df-46ed-a3b2-ca6c83b691fd.PNG)
-
+ </p>
+</details>
 
 ### GET student with ID:
 http://localhost:5000/students/id
