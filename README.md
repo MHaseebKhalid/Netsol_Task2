@@ -22,7 +22,7 @@ npm start
 
 **Below are demos How API is working:**
 
-## GET all students:
+### GET all students:
 <details>
 <summary>Details:</summary>
  <p>
