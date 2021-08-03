@@ -23,7 +23,7 @@ npm start
 ***Below are demos How API is working:**
 
 
-###GET all students:
+###GET all students:###
 http://localhost:5000/students
 **OR**
 https://netsoltask.herokuapp.com/students
