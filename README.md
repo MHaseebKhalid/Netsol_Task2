@@ -3,7 +3,7 @@
 for the API testing Postman is used.
 you can use any API testing tool
 
-Demo link:
+ ### DEMO Link ###:
 https://netsoltask.herokuapp.com/students
 
 
@@ -11,10 +11,9 @@ Download the Code using:
 git clone https://github.com/MHaseebKhalid/Netsol_Task2.git
 
 
-Then:
-
+#### Then ####:
 yarn install
-OR
+**OR**
 npm install
 
 And 
